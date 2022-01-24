@@ -1,0 +1,35 @@
+<x-app-layout>
+    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+        @forelse($courses as $course)
+            <div class="border-2 border-gray-100 rounded-md mb-3 overflow-hidden">
+                <div
+                    class="bg-[url('https://www.gstatic.com/classroom/themes/img_learnlanguage.jpg')] bg-cover p-2 text-white">
+                    <a class="hover:underline " href="{{route("courses.show", $course)}}">
+                        <h1 class="flex-auto text-lg font-semibold">
+                            {{$course->name}}
+                        </h1>
+                        <p class="text-sm">{{$course->description}}</p>
+                    </a>
+                    <div class="text-sm">
+                        <p>{{$course->teacher->name}}</p>
+                    </div>
+                </div>
+                <div class="min-h-[100px] flex justify-end px-1">
+                    <div
+                        class="bg-indigo-50 py-4 px-6 rounded-full w-min h-min relative -top-8">{{$course->teacher->name[0]}}</div>
+                </div>
+            </div>
+        @empty
+            <div class="flex flex-col justify-center items-center">
+                <img src="https://www.gstatic.com/classroom/empty_states_home.svg" alt="">
+                <p>Añade una clase para empezar</p>
+                <div class="mt-2">
+                    <a href="{{route('courses.create')}}" class="btn btn-primary bg-indigo-50 p-2 rounded">Crear
+                        clase</a>
+                    <a href="{{route('courses.create')}}" class="btn btn-primary bg-indigo-50 p-2 rounded">Unirme
+                        a clase</a>
+                </div>
+            </div>
+        @endforelse
+    </div>
+</x-app-layout>
