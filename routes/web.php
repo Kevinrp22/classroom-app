@@ -21,16 +21,18 @@ use Illuminate\View\View;
 });*/
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
 });
 
 /*Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');*/
 
-Route::resource("/courses", CourseController
-::class)->middleware(['auth']);
-Route::view("/join-class", "join-class")->middleware(['auth']);
-Route::post("/join-class", CourseController::class . '@joinClass')->middleware(['auth']);
+Route::middleware(['auth'])->group(function () {
+  Route::resource("/courses", CourseController::class);
+  Route::view("/join-class", "join-class");
+  Route::post("/join-class", CourseController::class . '@joinClass');
+  Route::delete("/courses/{course}/student/{student}", CourseController::class . '@deleteStudent')->name('courses.deleteStudent');
+});
 
 require __DIR__ . '/auth.php';
