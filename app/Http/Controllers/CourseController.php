@@ -32,7 +32,7 @@ class CourseController extends Controller
   /**
    * Show the form for creating a new resource.
    *
-   * @return Response
+   * @return Application|Factory|View
    */
   public function create()
   {
@@ -74,7 +74,8 @@ class CourseController extends Controller
    */
   public function edit($id)
   {
-    //
+    $course = Course::findOrFail($id);
+    return view("courses.edit", compact("course"));
   }
 
   /**
@@ -84,9 +85,12 @@ class CourseController extends Controller
    * @param int $id
    * @return Response
    */
-  public function update(Request $request, $id)
+  public function update(CreateCourseRequest $request, $id)
   {
-    //
+    $request->validated();
+    $course = Course::findOrFail($id);
+    $course->update($request->all());
+    return redirect()->route("courses.show", $course->id);
   }
 
   /**
@@ -98,7 +102,7 @@ class CourseController extends Controller
   public function destroy($id)
   {
     Course::destroy($id);
-    /*return redirect()->route("courses.index");*/
+    return redirect()->route("courses.index");
   }
 
   public function joinClass(joinClassRequest $request)
@@ -114,5 +118,11 @@ class CourseController extends Controller
     $course = Course::findOrFail($course);
     $course->students()->detach($student);
     return redirect()->route("courses.show", $course);
+  }
+
+  public function showMembers($id)
+  {
+    $course = Course::with(["teacher", "students"])->findOrFail($id);
+    return view("courses.members", compact("course"));
   }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
@@ -19,7 +20,6 @@ use Illuminate\View\View;
 /*DB::listen(function ($query) {
     var_dump($query->sql);
 });*/
-
 Route::get('/', function () {
   return view('welcome');
 });
@@ -30,9 +30,11 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
   Route::resource("/courses", CourseController::class);
+  Route::resource("/courses/{course}/homeworks", HomeworkController::class);
   Route::view("/join-class", "join-class");
   Route::post("/join-class", CourseController::class . '@joinClass');
   Route::delete("/courses/{course}/student/{student}", CourseController::class . '@deleteStudent')->name('courses.deleteStudent');
+  Route::get("/courses/{course}/members", CourseController::class . '@showMembers')->name('courses.members');
 });
 
 require __DIR__ . '/auth.php';

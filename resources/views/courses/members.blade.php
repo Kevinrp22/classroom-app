@@ -1,15 +1,4 @@
 <x-app-layout>
-  <div class="bg-[url('https://www.gstatic.com/classroom/themes/img_learnlanguage.jpg')] bg-cover min-h-max">
-    <div class="p-3 rounded text-white py-6">
-      <h1 class="mt-1 text-lg font-semibold">{{ $course->name }}</h1>
-
-      <p class="text-sm">{{$course->description}}</p>
-      <p class="text-xd"> Código de la clase: {{$course->code}}</p>
-      <a href="{{route("courses.edit", $course)}}">Ajustes</a>
-      <a href="{{route("courses.members",$course)}}">Personas</a>
-      <a href="{{route("homeworks.index", $course)}}">Trabajo de clase</a>
-    </div>
-  </div>
   <div>
     <div class="bg-white p-6">
       <p class="text-xl text-slate-500 font-semibold border-b border-indigo-400">Profesor</p>

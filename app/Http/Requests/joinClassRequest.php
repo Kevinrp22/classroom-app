@@ -33,11 +33,11 @@ class joinClassRequest extends FormRequest
     ];
   }
 
-  public function message(){
+  public function messages(){
     return [
-      "code.required" => "Please enter a course code",
-      "code.exists" => "The course code you entered does not exist",
-      "code.unique" => "You have already joined this course"
+      "code.required" => "Introduce el código de la clase",
+      "code.exists" => "El código de la clase no existe",
+      "code.unique" => "Eres el profesor de esta clase!"
     ];
   }
 }

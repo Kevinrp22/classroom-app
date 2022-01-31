@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateCourseRequest extends FormRequest
+class HomeworkRequest extends FormRequest
 {
   /**
    * Determine if the user is authorized to make this request.
@@ -24,19 +24,13 @@ class CreateCourseRequest extends FormRequest
   public function rules()
   {
     return [
-      "name" => "required",
+      "title" => "required",
       "description" => "required",
-      "subject" => "required",
+      "points" => "required|numeric",
+      "evaluable" => "", /* TODO: Al poner boolean, da error (REVISAR)*/
+      "type" => "required|in:individual,grupal",
+      "priority" => "required|in:baja,normal,alta",
+      "due_date" => "required|date",
     ];
   }
-
-  public function messages()
-  {
-    return [
-      "name.required" => "El nombre del curso es requerido",
-      "description.required" => "La descripción del curso es requerida",
-      "subject.required" => "La materia del curso es requerida",
-    ];
-  }
-
 }
