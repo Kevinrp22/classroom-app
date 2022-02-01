@@ -12,7 +12,7 @@
           </div>
 
           <a href="{{ route('homeworks.edit', [$course, $homework]) }}" class="font-bold py-2 px-4 rounded">
-            Edit
+            @lang("Update")
           </a>
         </div>
         <p class="text-gray-600 py-6">

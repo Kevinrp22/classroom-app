@@ -1,7 +1,7 @@
 <x-app-layout>
   <div>
     <div class="bg-white p-6">
-      <p class="text-xl text-slate-500 font-semibold border-b border-indigo-400">Profesor</p>
+      <p class="text-xl text-slate-500 font-semibold border-b border-indigo-400">@lang("Teacher")</p>
       <div class="flex items-center gap-2 my-4">
         <div>
           <div class="bg-indigo-50 py-2 px-4 rounded-full">{{$course->teacher->name[0]}}</div>
@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="bg-white p-6">
-      <p class="text-xl text-slate-500 font-semibold border-b border-indigo-400">Alumnos</p>
+      <p class="text-xl text-slate-500 font-semibold border-b border-indigo-400">@lang("Students")</p>
       @forelse($course->students as $student)
         <div class="flex items-center gap-2 my-4">
           <div>
@@ -24,7 +24,7 @@
             <small>{{$student->email}}</small>
             <form action="{{route("courses.deleteStudent", [$course,$student])}}" method="post">
               @csrf @method("delete")
-              <button>Quitar</button>
+              <button>@lang("Delete")</button>
             </form>
           </div>
         </div>
@@ -106,7 +106,7 @@
                     stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
           </div>
-          <p>No hay alumnos inscritos</p>
+          <p>@lang("There are no students enrolled")</p>
         </div>
       @endforelse
     </div>

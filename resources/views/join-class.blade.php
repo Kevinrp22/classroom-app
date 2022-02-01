@@ -1,7 +1,7 @@
 <x-app-layout>
   <div class="flex flex-col gap-4 rounded">
     <div class="bg-white p-6">
-      <p>Has iniciado sesión como </p>
+      <p>@lang("You are logged in as")</p>
       <p>{{ Auth::user()->name }}</p>
       <p>{{ Auth::user()->email }}</p>
     </div>
@@ -9,28 +9,27 @@
       <form action="/join-class" method="POST" class="flex flex-col">
         @csrf
         <label for="class_id">
-          Código de clase
+          @lang("Class code")
         </label>
-        <small>Pídele a tu profesor el código de clase e introdúcelo aquí.</small>
+        <small>@lang("Ask your teacher for the class code and enter it here.")</small>
         <input class="form-control"
                type="text"
                name="code"
                placeholder="Código de clase"
                required
                value="{{old('code')}}">
-       {{-- @if($errors->all())
-          {{dd($errors)}}
-        @endif--}}
+        {{-- @if($errors->all())
+           {{dd($errors)}}
+         @endif--}}
         @error("code")
         <div class="text-red-500">
           {{ $message }}
         </div>
         @enderror
         <button class=" btn bg-indigo-50 mt-4 w-max p-2 rounded" type="submit">
-          Unirse a clase
+          @lang("Join class")
         </button>
       </form>
-
-
     </div>
+  </div>
 </x-app-layout>

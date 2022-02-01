@@ -16,7 +16,7 @@
             @csrf @method("delete")
             <button type="submit"
                     class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
-              Delete
+              @lang('Delete')
             </button>
             </form>
           </div>
@@ -32,12 +32,10 @@
     @empty
       <div class="flex flex-col justify-center items-center">
         <img src="https://www.gstatic.com/classroom/empty_states_home.svg" alt="">
-        <p>Añade una clase para empezar</p>
+        <p>@lang("Add a class to get started")</p>
         <div class="mt-2">
-          <a href="{{route('courses.create')}}" class="btn btn-primary bg-indigo-50 p-2 rounded">Crear
-            clase</a>
-          <a href="{{route('courses.create')}}" class="btn btn-primary bg-indigo-50 p-2 rounded">Unirme
-            a clase</a>
+          <a href="{{route('courses.create')}}" class="btn btn-primary bg-indigo-50 p-2 rounded">@lang("Create class")</a>
+          <a href="{{route('courses.create')}}" class="btn btn-primary bg-indigo-50 p-2 rounded">@lang("Join class")</a>
         </div>
       </div>
     @endforelse

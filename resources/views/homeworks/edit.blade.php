@@ -11,38 +11,38 @@
     <form action="{{route("homeworks.store", $course)}}" method="POST">
       @csrf
       <div class="flex flex-col">
-        <label for="title">Título</label>
+        <label for="title">@lang("Title")</label>
         <input type="text" class="rounded" name="title" id="title" value="{{old("title", $homework->title)}}">
       </div>
       <div class="flex flex-col">
-        <label for="description">Descripción</label>
+        <label for="description">@lang("Description")</label>
         <textarea class="rounded" name="description" id="description">{{old("description", $homework->description)}}</textarea>
       </div>
       <div class="flex flex-col">
-        <label for="points">Puntos</label>
+        <label for="points">@lang("Points")</label>
         <input type="number" max="100" min="0" class="rounded" name="points" id="points" value="{{old("points", $homework->points)}}">
       </div>
       <div class="flex flex-col">
-        <label for="type">Tipo</label>
+        <label for="type">@lang("Type")</label>
         <select class="rounded" id="type" name="type">
-          <option value="">Seleccione un tipo</option>
-          <option value="individual" {{old("type", $homework->type) == "individual" ? "selected": ""}}>Individual</option>
-          <option value="grupal" {{old("type") == "grupal" ? "selected": ""}}>En grupo</option>
+          <option value="">@lang("Select a type")</option>
+          <option value="individual" {{old("type", $homework->type) == "individual" ? "selected": ""}}>@lang("Single")</option>
+          <option value="grupal" {{old("type") == "grupal" ? "selected": ""}}>@lang("In a group")</option>
         </select>
       </div>
       <div class="flex flex-col">
-        <p>Prioridad</p>
+        <p>@lang("Priority")</p>
         <label>
           <input type="radio" name="priority" id="baja" value="baja" {{old("priority", $homework->priority) == "baja" ? "checked": ""}}/>
-          Baja
+          @lang("Low")
         </label>
         <label for="normal">
           <input type="radio" name="priority" id="normal" value="normal" {{old("priority", $homework->priority) == "normal" ? "checked": ""}}/>
-          Media
+          @lang("Normal")
         </label>
         <label for="alta">
           <input type="radio" name="priority" id="alta" value="alta" {{old("priority", $homework->priority) == "alta" ? "checked": ""}}/>
-          Alta
+          @lang("High")
         </label>
 
       </div>

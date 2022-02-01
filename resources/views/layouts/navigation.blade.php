@@ -10,18 +10,13 @@
                     </a>
                 </div>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('courses.index')" :active="request()->routeIs('courses.index')">
-                        Cursos
-                    </x-nav-link>
-                </div>
+
             </div>
 
             <!-- Settings Dropdown -->
             <div class="flex items-center gap-2">
-                <a href="{{route('courses.create')}}" class="btn btn-primary bg-indigo-50 p-2 rounded">Crear clase</a>
-                <a href="{{url("/join-class")}}" class="btn btn-primary bg-indigo-50 p-2 rounded">Unirse a una clase</a>
+                <a href="{{route('courses.create')}}" class="btn btn-primary bg-indigo-50 p-2 rounded">@lang("Create class")</a>
+                <a href="{{url("/join-class")}}" class="btn btn-primary bg-indigo-50 p-2 rounded">@lang("Join class")</a>
             </div>
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
@@ -99,6 +94,7 @@
                     </x-responsive-nav-link>
                 </form>
             </div>
+
         </div>
     </div>
 </nav>

@@ -4,10 +4,10 @@
       <h1 class="mt-1 text-lg font-semibold">{{ $course->name }}</h1>
 
       <p class="text-sm">{{$course->description}}</p>
-      <p class="text-xd"> Código de la clase: {{$course->code}}</p>
-      <a href="{{route("courses.edit", $course)}}">Ajustes</a>
-      <a href="{{route("courses.members",$course)}}">Personas</a>
-      <a href="{{route("homeworks.index", $course)}}">Trabajo de clase</a>
+      <p class="text-xd"> @lang("Class code") {{$course->code}}</p>
+      <a href="{{route("courses.edit", $course)}}">@lang("Settings")</a>
+      <a href="{{route("courses.members",$course)}}">@lang("Members")</a>
+      <a href="{{route("homeworks.index", $course)}}">@lang("Homeworks")</a>
     </div>
   </div>
   <div>

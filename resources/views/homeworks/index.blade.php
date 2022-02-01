@@ -10,7 +10,7 @@
           </svg>
           <div>
             <a href="{{ route('homeworks.show', [$course, $homework]) }}">
-              <strong>{{$homework->course->teacher->name}}</strong> ha publicado una nuva tarea:
+              <strong>{{$homework->course->teacher->name}}</strong> @lang("has posted a new task"):
               <strong>{{ $homework->title }}</strong>
             </a>
             <p>{{strftime('%d/%m', strtotime($homework->created_at))}}</p>
@@ -19,7 +19,7 @@
         <form action="{{route("homeworks.destroy", [$course, $homework])}}" method="POST">
           @csrf
           @method('DELETE')
-          <button type="submit" class="text-red-500 hover:text-red-700">Eliminar</button>
+          <button type="submit" class="text-red-500 hover:text-red-700">@lang("Delete")</button>
         </form>
       </div>
     @empty
@@ -104,8 +104,8 @@
                   stroke-linecap="round"></path>
           </svg>
         </div>
-        <p class="font-semibold">Aquí podrás asignar trabajos</p>
-        <p>Puedes añadir tareas y otros trabajos para la clase y, después, organizarlos por temas</p>
+        <p class="font-semibold">@lang("Here you can assign jobs")</p>
+        <p>@lang("You can add assignments and other work for the class and then organize them by topic")</p>
         <a href="{{route("homeworks.create", $course)}}" class="bg-gray-800 text-white rounded py-2 px-6 mt-4">Crear</a>
       </div>
     @endforelse

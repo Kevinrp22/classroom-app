@@ -20,6 +20,7 @@ use Illuminate\View\View;
 /*DB::listen(function ($query) {
     var_dump($query->sql);
 });*/
+App::setLocale("es");
 Route::get('/', function () {
   return view('welcome');
 });
