@@ -2,22 +2,17 @@
   <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
     @forelse($courses as $course)
       <div class="border-2 border-gray-100 rounded-md mb-3 overflow-hidden">
-
-        <div
-          class="bg-[url('https://www.gstatic.com/classroom/themes/img_learnlanguage.jpg')] bg-cover p-2 text-white">
-          <a class="hover:underline " href="{{route("courses.show", $course)}}">
-            <h1 class="flex-auto text-lg font-semibold">
-              {{$course->name}}
-            </h1>
-            <p class="text-sm">{{$course->description}}</p>
-          </a>
-          <div>
+        <div class="bg-[url('https://www.gstatic.com/classroom/themes/img_learnlanguage.jpg')] bg-cover p-2 text-white">
+          <div class="flex justify-between">
+            <a class="hover:underline " href="{{route("courses.show", $course)}}">
+              <h1 class="flex-auto text-lg font-semibold">
+                {{$course->name}}
+              </h1>
+              <p class="text-sm">{{$course->description}}</p>
+            </a>
             <form method="post" action="{{route("courses.destroy", $course)}}" onsubmit="return confirm('¿Estas seguro de querer eliminar el curso?')">
-            @csrf @method("delete")
-            <button type="submit"
-                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
-              @lang('Delete')
-            </button>
+              @csrf @method("delete")
+              <button type="submit" class="text-red-500 hover:text-red-700 pt-3 pr-3"><i class="far fa-trash-alt text-xl"></i></button>
             </form>
           </div>
           <div class="text-sm">
@@ -34,7 +29,8 @@
         <img src="https://www.gstatic.com/classroom/empty_states_home.svg" alt="">
         <p>@lang("Add a class to get started")</p>
         <div class="mt-2">
-          <a href="{{route('courses.create')}}" class="btn btn-primary bg-indigo-50 p-2 rounded">@lang("Create class")</a>
+          <a href="{{route('courses.create')}}"
+             class="btn btn-primary bg-indigo-50 p-2 rounded">@lang("Create class")</a>
           <a href="{{route('courses.create')}}" class="btn btn-primary bg-indigo-50 p-2 rounded">@lang("Join class")</a>
         </div>
       </div>

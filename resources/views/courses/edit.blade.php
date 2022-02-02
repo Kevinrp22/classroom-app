@@ -1,5 +1,8 @@
 <x-app-layout>
-  <div>
+  <x-slot name="subNav">
+    <x-sub-navigation :course="$course"/>
+  </x-slot>
+  <div class="m-auto max-w-2xl">
     <p class="text-xl text-indigo-700">@lang("Class details")</p>
     @if($errors->any())
       @foreach($errors->all() as $error)
@@ -20,12 +23,17 @@
         <input type="text" class="rounded" name="description" value="{{old("description", $course->description)}}">
       </div>
       <div class="flex flex-col">
-        <label for="subject">@lang("subject")</label>
+        <label for="subject">@lang("Subject")</label>
         <input type="text" class="rounded" name="subject" value="{{old("subject",$course->subject)}}">
       </div>
 
-      <input type="submit" class="bg-gray-800 text-white rounded p-2 mt-2" value="@lang("Update")" />
-
+      <button type="submit" class="bg-gray-800 w-full text-white mt-4 rounded p-2 hover:bg-gray-700">@lang("Update")</button>
+      <form method="post" action="{{route("courses.destroy", $course)}}"
+            onsubmit="return confirm('¿Estas seguro de querer eliminar el curso?')">
+        @csrf @method("delete")
+        <button type="submit"
+                class=" w-full bg-red-500 text-white text-md my-2 p-2 px-3 rounded-md hover:bg-red-700">@lang("Delete class")</button>
+      </form>
     </form>
   </div>
 </x-app-layout>

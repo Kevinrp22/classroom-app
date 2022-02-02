@@ -1,4 +1,7 @@
 <x-app-layout>
+  <x-slot name="subNav">
+    <x-sub-navigation :course="$course"/>
+  </x-slot>
   <div>
     <div class="bg-white p-6">
       <p class="text-xl text-slate-500 font-semibold border-b border-indigo-400">@lang("Teacher")</p>
@@ -19,12 +22,15 @@
           <div>
             <div class="bg-indigo-50 py-2 px-4 rounded-full">{{$student->name[0]}}</div>
           </div>
-          <div>
-            <div class="p-0 m-0">{{$student->name}}</div>
-            <small>{{$student->email}}</small>
+          <div class="flex justify-between w-full">
+            <div>
+              <div class="p-0 m-0">{{$student->name}}</div>
+              <small>{{$student->email}}</small>
+            </div>
             <form action="{{route("courses.deleteStudent", [$course,$student])}}" method="post">
               @csrf @method("delete")
-              <button>@lang("Delete")</button>
+              <button type="submit" class="text-red-500 hover:text-red-700 pt-3 pr-3"><i
+                  class="far fa-trash-alt text-xl"></i></button>
             </form>
           </div>
         </div>

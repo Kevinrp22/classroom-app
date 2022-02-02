@@ -9,6 +9,7 @@
   "Create class": "Crear clase",
   "Create": "Crear",
   "Join class": "Unirse a una clase",
+  "Delete class": "Eliminar clase",
   "Delete": "Eliminar",
   "Class name": "Nombre de clase",
   "Description": "Descripción",
@@ -45,5 +46,7 @@
   "Enter the class code": "Introduce el código de clase",
   "Class code does not exist": "El código de clase no existe",
   "You are the teacher of this class!": "Eres el profesor de esta clase!",
-  "You are already a student of this course!": "Ya eres alumno de este curso!"
+  "You are already a student of this course!": "Ya eres alumno de este curso!",
+  "No homework yet": "No hay trabajo de clase todavía",
+  "Leave class": "Abandonar clase"
 }

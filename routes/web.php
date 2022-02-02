@@ -34,6 +34,7 @@ Route::middleware(['auth'])->group(function () {
   Route::resource("/courses/{course}/homeworks", HomeworkController::class);
   Route::view("/join-class", "join-class");
   Route::post("/join-class", CourseController::class . '@joinClass');
+  Route::delete("/courses/{course}/leave", CourseController::class . '@leaveClass')->name('courses.leave');
   Route::delete("/courses/{course}/student/{student}", CourseController::class . '@deleteStudent')->name('courses.deleteStudent');
   Route::get("/courses/{course}/members", CourseController::class . '@showMembers')->name('courses.members');
 });

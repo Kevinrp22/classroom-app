@@ -3,7 +3,7 @@
   <div class="flex items-center">
     <x-homework-icon/>
     <div class="pl-4">
-      <a href="{{ route('homeworks.show', [$course, $homework]) }}">
+      <a href="{{ route('homeworks.show', [$course, $homework]) }}" class="hover:underline">
         <strong>{{$homework->course->teacher->name}}</strong> @lang("has posted a new task"):
         <strong>{{ $homework->title }}</strong>
       </a>

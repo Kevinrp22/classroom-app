@@ -125,4 +125,11 @@ class CourseController extends Controller
     $course = Course::with(["teacher", "students"])->findOrFail($id);
     return view("courses.members", compact("course"));
   }
+
+  public function leaveClass($id)
+  {
+    $course = Course::findOrFail($id);
+    $course->students()->detach(auth()->user()->id);
+    return redirect()->route("courses.index");
+  }
 }
