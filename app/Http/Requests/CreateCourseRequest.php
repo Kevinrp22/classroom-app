@@ -30,13 +30,4 @@ class CreateCourseRequest extends FormRequest
     ];
   }
 
-  public function messages()
-  {
-    return [
-      "name.required" => "El nombre del curso es requerido",
-      "description.required" => "La descripción del curso es requerida",
-      "subject.required" => "La materia del curso es requerida",
-    ];
-  }
-
 }

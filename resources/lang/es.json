@@ -7,6 +7,7 @@
   "Homeworks": "Trabajo de clase",
   "Homework": "Tarea",
   "Create class": "Crear clase",
+  "Create": "Crear",
   "Join class": "Unirse a una clase",
   "Delete": "Eliminar",
   "Class name": "Nombre de clase",
@@ -18,7 +19,7 @@
   "Join me": "Unirme",
   "Add a class to get started": "Añade una clase para empezar",
   "Class details": "Detalles de clase",
-  "There are no students enrolled": "No hay alumnos inscritos"
+  "There are no students enrolled": "No hay alumnos inscritos",
   "Title": "Título",
   "Points": "Puntos",
   "Type": "Tipo",
@@ -33,5 +34,16 @@
   "Evaluable": "Evaluable",
   "has posted a new task": "ha publicado una nueva tarea",
   "Here you can assign jobs": "Aquí podrás asignar trabajos",
-  "You can add assignments and other work for the class and then organize them by topic": "Puedes añadir tareas y otros trabajos para la clase y, después, organizarlos por temas"
+  "You can add assignments and other work for the class and then organize them by topic": "Puedes añadir tareas y otros trabajos para la clase y, después, organizarlos por temas",
+  "Forgot your password?": "¿Olvidaste tu contraseña?",
+  "Password": "Contraseña",
+  "Email": "Correo electrónico",
+  "Log in": "Iniciar sesión",
+  "Log Out": "Cerrar sesión",
+  "Register": "Registrarse",
+  "Remember me": "Recuérdame",
+  "Enter the class code": "Introduce el código de clase",
+  "Class code does not exist": "El código de clase no existe",
+  "You are the teacher of this class!": "Eres el profesor de esta clase!",
+  "You are already a student of this course!": "Ya eres alumno de este curso!"
 }

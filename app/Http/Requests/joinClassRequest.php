@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Course;
+use App\Rules\isStudentAlreadyInClass;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -12,7 +14,9 @@ class joinClassRequest extends FormRequest
    *
    * @return bool
    */
-  public function authorize()
+
+  public
+  function authorize()
   {
     return true;
   }
@@ -22,22 +26,27 @@ class joinClassRequest extends FormRequest
    *
    * @return array
    */
-  public function rules()
+  public
+  function rules()
   {
     return [
       "code" => [
         "required",
         "exists:courses",
-        Rule::unique("courses")->where("teacher_id", auth()->user()->id)
+        Rule::unique("courses")->where("teacher_id", auth()->user()->id),
+        new isStudentAlreadyInClass
       ]
+
     ];
   }
 
-  public function messages(){
+  public
+  function messages()
+  {
     return [
-      "code.required" => "Introduce el código de la clase",
-      "code.exists" => "El código de la clase no existe",
-      "code.unique" => "Eres el profesor de esta clase!"
+      "code.required" => __("Enter the class code"),
+      "code.exists" => __("Class code does not exist"),
+      "code.unique" => __("You are the teacher of this class!")
     ];
   }
 }

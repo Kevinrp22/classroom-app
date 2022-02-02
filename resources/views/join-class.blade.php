@@ -1,4 +1,5 @@
 <x-app-layout>
+ {{-- {{dd($errors->all())}}--}}
   <div class="flex flex-col gap-4 rounded">
     <div class="bg-white p-6">
       <p>@lang("You are logged in as")</p>
@@ -15,7 +16,7 @@
         <input class="form-control"
                type="text"
                name="code"
-               placeholder="Código de clase"
+               placeholder="@lang("Class code")"
                required
                value="{{old('code')}}">
         {{-- @if($errors->all())

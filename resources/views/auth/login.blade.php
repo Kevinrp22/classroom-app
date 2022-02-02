@@ -46,7 +46,7 @@
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
-                    <a class="pl-3 underline text-sm text-gray-600 hover:text-gray-900" href="{{route("register")}}">Register</a>
+                    <a class="pl-3 underline text-sm text-gray-600 hover:text-gray-900" href="{{route("register")}}">@lang("Register")</a>
 
                 <x-button class="ml-3">
                     {{ __('Log in') }}

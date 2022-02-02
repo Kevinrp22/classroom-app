@@ -156,6 +156,16 @@ return [
   |
   */
 
-  'attributes' => [],
+  'attributes' => [
+    "name" => "nombre",
+    "description"=>"descripción",
+    "email"=>"correo electrónico",
+    "password"=>"contraseña",
+    "password_confirmation"=>"confirmación de contraseña",
+    "old_password"=>"contraseña anterior",
+    "new_password"=>"contraseña nueva",
+    "new_password_confirmation"=>"confirmación de contraseña nueva",
+    "subject"=>"materia",
+  ],
 
 ];

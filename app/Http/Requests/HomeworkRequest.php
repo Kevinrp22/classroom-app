@@ -27,7 +27,6 @@ class HomeworkRequest extends FormRequest
       "title" => "required",
       "description" => "required",
       "points" => "required|numeric",
-      "evaluable" => "", /* TODO: Al poner boolean, da error (REVISAR)*/
       "type" => "required|in:individual,grupal",
       "priority" => "required|in:baja,normal,alta",
       "due_date" => "required|date",

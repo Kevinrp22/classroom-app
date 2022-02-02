@@ -24,7 +24,7 @@
                         <label for="subject">@lang("Subject")</label>
                         <input type="text" class="rounded" name="subject" value="Inglés">
                     </div>
-                    <input type="submit" class="bg-gray-800 text-white rounded p-2">
+                    <input type="submit" class="bg-gray-800 text-white rounded p-2" value="@lang("Create")">
                 </form>
             </div>
         </div>
