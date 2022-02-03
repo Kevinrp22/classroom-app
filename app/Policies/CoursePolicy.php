@@ -30,7 +30,7 @@ class CoursePolicy
    */
   public function view(User $user, Course $course)
   {
-    return $course->whereRelation("students", "id", "=", $user->id)->exists() || $course->where("teacher_id", $user->id)->exists();
+    return $course->students()->where("id", $user->id)->exists() || $course->teacher_id == $user->id;
   }
 
   /**
