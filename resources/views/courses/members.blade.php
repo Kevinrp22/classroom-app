@@ -27,11 +27,13 @@
               <div class="p-0 m-0">{{$student->name}}</div>
               <small>{{$student->email}}</small>
             </div>
-            <form action="{{route("courses.deleteStudent", [$course,$student])}}" method="post">
-              @csrf @method("delete")
-              <button type="submit" class="text-red-500 hover:text-red-700 pt-3 pr-3"><i
-                  class="far fa-trash-alt text-xl"></i></button>
-            </form>
+            @can("delete", $course)
+              <form action="{{route("courses.deleteStudent", [$course,$student])}}" method="post">
+                @csrf @method("delete")
+                <button type="submit" class="text-red-500 hover:text-red-700 pt-3 pr-3"><i
+                    class="far fa-trash-alt text-xl"></i></button>
+              </form>
+            @endcan
           </div>
         </div>
       @empty

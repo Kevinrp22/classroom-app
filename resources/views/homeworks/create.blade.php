@@ -3,7 +3,7 @@
     <p class="text-xl text-indigo-700">@lang("Homework")</p>
     @if($errors->any())
       @foreach($errors->all() as $error)
-        <div class="bg-gray-500 border-l-4 border-red-500 text-red-600" role="alert">
+        <div class="border-l-4 border-red-500 text-red-600" role="alert">
           <p>{{ $error }}</p>
         </div>
       @endforeach

@@ -11,6 +11,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Gate;
 
 class HomeworkController extends Controller
 {
@@ -71,9 +72,9 @@ class HomeworkController extends Controller
    */
   public function edit($course, $homework)
   {
-    $course = Course::findOrFail($course);
+    Gate::authorize("update", $course = Course::findOrFail($course));
     $homework = Homework::findOrFail($homework);
-    return view("homeworks.show", compact("homework", "course"));
+    return view("homeworks.edit", compact("homework", "course"));
   }
 
   /**
@@ -81,11 +82,14 @@ class HomeworkController extends Controller
    *
    * @param Request $request
    * @param Homework $homework
-   * @return Response
+   * @return RedirectResponse
    */
-  public function update(Request $request, Homework $homework)
+  public function update(HomeworkRequest $request, $homework)
   {
-    //
+    Gate::authorize("update", new Course);
+    $request->validated();
+    $homework->update($request->all());
+    return redirect()->route("homeworks.show", ["course" => $homework->course_id, "homework" => $homework]);
   }
 
   /**
@@ -96,6 +100,7 @@ class HomeworkController extends Controller
    */
   public function destroy($course, $homework)
   {
+    Gate::authorize("delete", new Course);
     Homework::destroy($homework);
     return redirect()->route("homeworks.index", $course);
   }

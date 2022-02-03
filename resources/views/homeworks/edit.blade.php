@@ -8,8 +8,9 @@
         </div>
       @endforeach
     @endif
-    <form action="{{route("homeworks.store", $course)}}" method="POST">
+    <form action="{{route("homeworks.update",[$course, $homework])}}" method="POST">
       @csrf
+      @method("PUT")
       <div class="flex flex-col">
         <label for="title">@lang("Title")</label>
         <input type="text" class="rounded" name="title" id="title" value="{{old("title", $homework->title)}}">

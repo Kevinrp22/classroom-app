@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateCourseRequest;
+use App\Http\Requests\CourseRequest;
 use App\Http\Requests\joinClassRequest;
 use App\Models\Course;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Validator;
@@ -42,10 +44,10 @@ class CourseController extends Controller
   /**
    * Store a newly created resource in storage.
    *
-   * @param \Illuminate\Http\Request $request
-   * @return \Illuminate\Http\RedirectResponse
+   * @param Request $request
+   * @return RedirectResponse
    */
-  public function store(CreateCourseRequest $request)
+  public function store(CourseRequest $request)
   {
     $data = array_merge($request->validated(),
       ["teacher_id" => auth()->user()->id,
@@ -62,7 +64,7 @@ class CourseController extends Controller
    */
   public function show($id)
   {
-    $course = Course::with(["teacher", "students", "homeworks"])->findOrFail($id);
+    Gate::authorize("view", $course = Course::with(["teacher", "students", "homeworks"])->findOrFail($id));
     return view("courses.show", compact("course"));
   }
 
@@ -74,21 +76,21 @@ class CourseController extends Controller
    */
   public function edit($id)
   {
-    $course = Course::findOrFail($id);
+    Gate::authorize("update", $course = Course::findOrFail($id));
     return view("courses.edit", compact("course"));
   }
 
   /**
    * Update the specified resource in storage.
    *
-   * @param \Illuminate\Http\Request $request
+   * @param Request $request
    * @param int $id
-   * @return Response
+   * @return RedirectResponse
    */
-  public function update(CreateCourseRequest $request, $id)
+  public function update(CourseRequest $request, $id)
   {
+    Gate::authorize("update", $course = Course::findOrFail($id));
     $request->validated();
-    $course = Course::findOrFail($id);
     $course->update($request->all());
     return redirect()->route("courses.show", $course->id);
   }
@@ -97,7 +99,7 @@ class CourseController extends Controller
    * Remove the specified resource from storage.
    *
    * @param int $id
-   * @return \Illuminate\Http\RedirectResponse
+   * @return RedirectResponse
    */
   public function destroy($id)
   {
@@ -115,7 +117,7 @@ class CourseController extends Controller
 
   public function deleteStudent($course, $student)
   {
-    $course = Course::findOrFail($course);
+    Gate::authorize("delete", $course = Course::findOrFail($course));
     $course->students()->detach($student);
     return redirect()->route("courses.show", $course);
   }
@@ -126,7 +128,7 @@ class CourseController extends Controller
     return view("courses.members", compact("course"));
   }
 
-  public function leaveClass($id)
+  public function leaveCourse($id)
   {
     $course = Course::findOrFail($id);
     $course->students()->detach(auth()->user()->id);

@@ -27,13 +27,14 @@
         <input type="text" class="rounded" name="subject" value="{{old("subject",$course->subject)}}">
       </div>
 
-      <button type="submit" class="bg-gray-800 w-full text-white mt-4 rounded p-2 hover:bg-gray-700">@lang("Update")</button>
-      <form method="post" action="{{route("courses.destroy", $course)}}"
-            onsubmit="return confirm('¿Estas seguro de querer eliminar el curso?')">
-        @csrf @method("delete")
-        <button type="submit"
-                class=" w-full bg-red-500 text-white text-md my-2 p-2 px-3 rounded-md hover:bg-red-700">@lang("Delete class")</button>
-      </form>
+      <button type="submit" class="bg-gray-800 w-full text-white mt-2 rounded p-2 hover:bg-gray-700">@lang("Update")</button>
+
+    </form>
+    <form method="post" action="{{route("courses.destroy", $course)}}"
+          onsubmit="return confirm('¿Estas seguro de querer eliminar el curso?')">
+      @csrf @method("delete")
+      <button type="submit"
+              class=" w-full bg-red-500 text-white text-md p-2 px-3 rounded-md hover:bg-red-700">@lang("Delete class")</button>
     </form>
   </div>
 </x-app-layout>

@@ -10,10 +10,13 @@
               </h1>
               <p class="text-sm">{{$course->description}}</p>
             </a>
-            <form method="post" action="{{route("courses.destroy", $course)}}" onsubmit="return confirm('¿Estas seguro de querer eliminar el curso?')">
-              @csrf @method("delete")
-              <button type="submit" class="text-red-500 hover:text-red-700 pt-3 pr-3"><i class="far fa-trash-alt text-xl"></i></button>
-            </form>
+
+            @can("delete", $course)
+              <form method="post" action="{{route("courses.destroy", $course)}}" onsubmit="return confirm('¿Estas seguro de querer eliminar el curso?')">
+                @csrf @method("delete")
+                <button type="submit" class="text-red-500 hover:text-red-700 pt-3 pr-3"><i class="far fa-trash-alt text-xl"></i></button>
+              </form>
+            @endcan
           </div>
           <div class="text-sm">
             <p>{{$course->teacher->name}}</p>
@@ -31,7 +34,7 @@
         <div class="mt-2">
           <a href="{{route('courses.create')}}"
              class="btn btn-primary bg-indigo-50 p-2 rounded">@lang("Create class")</a>
-          <a href="{{route('courses.create')}}" class="btn btn-primary bg-indigo-50 p-2 rounded">@lang("Join class")</a>
+          <a href="{{route('courses.joinClass')}}" class="btn btn-primary bg-indigo-50 p-2 rounded">@lang("Join class")</a>
         </div>
       </div>
     @endforelse

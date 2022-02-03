@@ -10,9 +10,11 @@
       <p>{{strftime('%d/%m', strtotime($homework->created_at))}}</p>
     </div>
   </div>
-  <form action="{{route("homeworks.destroy", [$course, $homework])}}" method="POST">
-    @csrf
-    @method('DELETE')
-    <button type="submit" class="text-red-500 hover:text-red-700"><i class="far fa-trash-alt text-xl"></i></button>
-  </form>
+  @can("delete", $course)
+    <form action="{{route("homeworks.destroy", [$course, $homework])}}" method="POST">
+      @csrf
+      @method('DELETE')
+      <button type="submit" class="text-red-500 hover:text-red-700"><i class="far fa-trash-alt text-xl"></i></button>
+    </form>
+  @endcan
 </div>

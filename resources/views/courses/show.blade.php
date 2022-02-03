@@ -9,11 +9,13 @@
       <p class="text-sm">{{$course->description}}</p>
       <p class="text-xd"> @lang("Class code") {{$course->code}}</p>
     </div>
-    <form action="{{route("courses.leave", $course->id)}}" method="post">
-      @method("delete")
-      <button type="submit"
-              class="bg-red-500 text-white text-sm px-3 py-1 rounded-md mr-3 mt-3 hover:bg-red-700">@lang("Leave class")</button>
-    </form>
+    @if(!($course->teacher_id == Auth::user()->id))
+      <form action="{{route("courses.leave", $course)}}" method="post">
+        @csrf @method("delete")
+        <button type="submit"
+                class="bg-red-500 text-white text-sm px-3 py-1 rounded-md mr-3 mt-3 hover:bg-red-700">@lang("Leave class")</button>
+      </form>
+    @endif
   </div>
   <div class="my-5">
     @forelse($course->homeworks as $homework)

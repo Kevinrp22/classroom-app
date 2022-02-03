@@ -34,7 +34,9 @@ class joinClassRequest extends FormRequest
         "required",
         "exists:courses",
         Rule::unique("courses")->where("teacher_id", auth()->user()->id),
-        new isStudentAlreadyInClass
+        Rule::when(function () {
+          return Course::where('code', $this->code)->first();
+        }, new isStudentAlreadyInClass),
       ]
 
     ];

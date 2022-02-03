@@ -11,9 +11,11 @@
             </p>
           </div>
 
-          <a href="{{ route('homeworks.edit', [$course, $homework]) }}" class="font-bold py-2 px-4 rounded">
-            @lang("Update")
-          </a>
+          @can('update', $course)
+            <a href="{{ route('homeworks.edit', [$course, $homework]) }}" class="font-bold py-2 px-4 rounded">
+              @lang("Update")
+            </a>
+          @endcan
         </div>
         <p class="text-gray-600 py-6">
           {{ $homework->description }}

@@ -2,14 +2,17 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Course;
+use Illuminate\Auth\Access\Response;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
-class CreateCourseRequest extends FormRequest
+class CourseRequest extends FormRequest
 {
   /**
    * Determine if the user is authorized to make this request.
    *
-   * @return bool
+   * @return Response
    */
   public function authorize()
   {
