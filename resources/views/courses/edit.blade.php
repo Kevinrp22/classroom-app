@@ -16,15 +16,15 @@
       @method("PUT")
       <div class="flex flex-col">
         <label for="name">@lang("Class name")</label>
-        <input type="text" class="rounded" name="name" value="{{old("name", $course->name)}}">
+        <input type="text" class="rounded" name="name" value="{{old("name", $course->name)}}" required>
       </div>
       <div class="flex flex-col">
         <label for="description">@lang("Description")</label>
-        <input type="text" class="rounded" name="description" value="{{old("description", $course->description)}}">
+        <input type="text" class="rounded" name="description" value="{{old("description", $course->description)}}" required>
       </div>
       <div class="flex flex-col">
         <label for="subject">@lang("Subject")</label>
-        <input type="text" class="rounded" name="subject" value="{{old("subject",$course->subject)}}">
+        <input type="text" class="rounded" name="subject" value="{{old("subject",$course->subject)}}" required>
       </div>
 
       <button type="submit" class="bg-gray-800 w-full text-white mt-2 rounded p-2 hover:bg-gray-700">@lang("Update")</button>

@@ -14,15 +14,15 @@
                     @CSRF
                     <div class="form-group">
                         <label for="name">@lang("Class name")</label>
-                        <input type="text" class="rounded" name="name">
+                        <input type="text" class="rounded" name="name" value="{{old("name")}}" required>
                     </div>
                     <div class="form-group">
                         <label for="description">@lang("Description")</label>
-                        <input type="text" class="rounded" name="description" value="Esto es una descripción">
+                        <input type="text" class="rounded" name="description" value="{{old("description")}}" required>
                     </div>
                     <div class="form-group">
                         <label for="subject">@lang("Subject")</label>
-                        <input type="text" class="rounded" name="subject" value="Inglés">
+                        <input type="text" class="rounded" name="subject" value="{{old("subject")}}" required>
                     </div>
                     <input type="submit" class="bg-gray-800 text-white rounded p-2" value="@lang("Create")">
                 </form>

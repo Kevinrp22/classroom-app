@@ -25,12 +25,9 @@ Route::get('/', function () {
   return view('welcome');
 });
 
-/*Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');*/
-
 Route::middleware(['auth'])->group(function () {
   Route::resource("/courses", CourseController::class);
+  Route::get("create-course", CourseController::class . "@create")->name("courses.create");
   Route::resource("/courses/{course}/homeworks", HomeworkController::class);
   Route::view("/join-class", "join-class");
   Route::post("/join-class", CourseController::class . '@joinClass');

@@ -12,19 +12,19 @@
       @csrf
       <div class="flex flex-col">
         <label for="title">@lang("Title")</label>
-        <input type="text" class="rounded" name="title" id="title" value="{{old("title")}}">
+        <input type="text" class="rounded" name="title" id="title" value="{{old("title")}}" required>
       </div>
       <div class="flex flex-col">
         <label for="description">@lang("Description")</label>
-        <textarea class="rounded" name="description" id="description">{{old("description")}}</textarea>
+        <textarea class="rounded" name="description" id="description" required>{{old("description")}}</textarea>
       </div>
       <div class="flex flex-col">
         <label for="points">@lang("Points")</label>
-        <input type="number" max="100" min="0" class="rounded" name="points" id="points" value="{{old("points")}}">
+        <input type="number" max="100" min="0" class="rounded" name="points" id="points" value="{{old("points")}}" required>
       </div>
       <div class="flex flex-col">
         <label for="type">@lang("Type")</label>
-        <select class="rounded" id="type" name="type">
+        <select class="rounded" id="type" name="type" required>
           <option value="">@lang("Select a type")</option>
           <option value="individual" {{old("type") == "individual" ? "selected": ""}}>@lang("Single")</option>
           <option value="grupal" {{old("type") == "grupal" ? "selected": ""}}>@lang("In a group")</option>
@@ -49,7 +49,7 @@
       <div class="flex flex-col">
         <label>
           @lang("Due date")
-          <input type="date" class="rounded" name="due_date" value="{{old("due_date")}}">
+          <input type="date" class="rounded" name="due_date" value="{{old("due_date")}}" required>
         </label>
       </div>
       <div class="flex flex-col">
