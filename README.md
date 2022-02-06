@@ -6,3 +6,11 @@
 Un intento de clon de [Google Classroom](https://classroom.google.com/). =)
 
 **Despleado en remoto**: http://ec2-3-139-23-245.us-east-2.compute.amazonaws.com:8000
+
+#### Usuarios por defecto
+- **Kevin**:
+  - ***email***: kevinpuchaicela@gmail.com
+  - ***password***: 12345678
+- **Lucas**:
+  - ***email***: lucas@gmail.com
+  - ***password***: 12345678
