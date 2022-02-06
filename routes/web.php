@@ -17,7 +17,9 @@ use Illuminate\View\View;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::fallback(function (){
+/*App::setLocale("es");*/  //Descomentar para traducir a español
+
+Route::fallback(function () {
   return view("errors.404"); // fallback hecho  por que asi lo pide el ejercicio..
 });
 
