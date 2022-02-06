@@ -34,7 +34,7 @@
         <div class="mt-2">
           <a href="{{route('courses.create')}}"
              class="btn btn-primary bg-indigo-50 p-2 rounded">@lang("Create class")</a>
-          <a href="{{route('courses.joinClass')}}" class="btn btn-primary bg-indigo-50 p-2 rounded">@lang("Join class")</a>
+          <a href="{{url("/join-class")}}" class="btn btn-primary bg-indigo-50 p-2 rounded">@lang("Join class")</a>
         </div>
       </div>
     @endforelse

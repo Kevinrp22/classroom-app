@@ -19,7 +19,7 @@ use Illuminate\View\View;
 */
 /*App::setLocale("es");*/  //Descomentar para traducir a español
 
-Route::fallback(function () {
+Route::fallback(function (){
   return view("errors.404"); // fallback hecho  por que asi lo pide el ejercicio..
 });
 
