@@ -17,9 +17,9 @@ use Illuminate\View\View;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*DB::listen(function ($query) {
-    var_dump($query->sql);
-});*/
+Route::fallback(function (){
+  return view("errors.404"); // fallback hecho  por que asi lo pide el ejercicio..
+});
 
 Route::get('/', function () {
   return view('welcome');
