@@ -28,7 +28,7 @@
         <select class="rounded" id="type" name="type" required>
           <option value="">@lang("Select a type")</option>
           <option value="individual" {{old("type", $homework->type) == "individual" ? "selected": ""}}>@lang("Single")</option>
-          <option value="grupal" {{old("type") == "grupal" ? "selected": ""}}>@lang("In a group")</option>
+          <option value="grupal" {{old("type", $homework->type) == "grupal" ? "selected": ""}}>@lang("In a group")</option>
         </select>
       </div>
       <div class="flex flex-col">
