@@ -1,8 +1,15 @@
 <x-app-layout>
   <x-slot name="subNav">
     <x-sub-navigation :course="$course"/>
+    <div class="text-center py-2">
+      @if(count($homeworks) > 0)
+        <a href="{{route("homeworks.create", $course)}}"
+           class="bg-gray-800 text-white rounded py-2 px-6 mt-4">@lang("Create")</a>
+      @endif
+    </div>
   </x-slot>
   <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+
     @forelse($homeworks as $homework)
       <x-homework-item :homework="$homework" :course="$course"/>
     @empty
@@ -95,7 +102,7 @@
           <p class="font-semibold">@lang("Here you can assign jobs")</p>
           <p>@lang("You can add assignments and other work for the class and then organize them by topic")</p>
           <a href="{{route("homeworks.create", $course)}}"
-             class="bg-gray-800 text-white rounded py-2 px-6 mt-4">Crear</a>
+             class="bg-gray-800 text-white rounded py-2 px-6 mt-4">@lang("Create")</a>
         </div>
       @else
         <p class="text-gray-500 text-center">

@@ -84,12 +84,13 @@ class HomeworkController extends Controller
    * @param Homework $homework
    * @return RedirectResponse
    */
-  public function update(HomeworkRequest $request, $homework)
+  public function update(HomeworkRequest $request, $course, $homework)
   {
-    Gate::authorize("update", new Course);
+    Gate::authorize("update", $course = Course::findOrFail($course));
     $request->validated();
+    $homework = Homework::findOrFail($homework);
     $homework->update($request->all());
-    return redirect()->route("homeworks.show", ["course" => $homework->course_id, "homework" => $homework]);
+    return redirect()->route("homeworks.show", compact("course", "homework"));
   }
 
   /**

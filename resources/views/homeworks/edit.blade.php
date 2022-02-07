@@ -49,17 +49,17 @@
       </div>
       <div class="flex flex-col">
         <label>
-          Fecha de entrega
+          @lang("Due date")
           <input type="date" class="rounded" name="due_date" value="{{old("due_date", $homework->due_date)}}" required>
         </label>
       </div>
       <div class="flex flex-col">
         <label>
           <input type="checkbox" class="rounded" name="evaluable" value="1" {{old("evaluable", $homework->evaluable) == "1" ? "checked": ""}}>
-          Evaluable
+          @lang("Evaluable")
         </label>
       </div>
-      <input type="submit" class="bg-gray-800 text-white rounded p-2 mt-2" value="Crear"/>
+      <input type="submit" class="bg-gray-800 text-white rounded p-2 mt-2" value="@lang("Update")"/>
 
     </form>
   </div>
